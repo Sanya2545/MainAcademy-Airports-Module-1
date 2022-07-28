@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Airport_Panel
 {
-    public class Terminal
+    public class Terminal : IAirport
     {
         private static int id = 0;
         public int ID
         {
             get { return generateId(); }
-            init {}
+            init { }
         }
-        string Name { get; set; }
+        public string Name { get; init; }
         public int[] Gates { get; set; }
-        public Terminal(string name = "Unknown", int[] gates = null)
+        public Terminal(string name = "Unknown", int[] gates = null!)
         {
             ID = generateId();
             Name = name;

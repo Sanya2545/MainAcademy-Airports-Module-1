@@ -13,3 +13,5 @@ D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\Airport_Panel\Airport_Pan
 D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\Airport_Panel\Airport_Panel\obj\Debug\net6.0\Airport_Panel.pdb
 D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\Airport_Panel\Airport_Panel\obj\Debug\net6.0\Airport_Panel.genruntimeconfig.cache
 D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\Airport_Panel\Airport_Panel\obj\Debug\net6.0\ref\Airport_Panel.dll
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\Airport_Panel\Airport_Panel\bin\Debug\net6.0\ConsoleTables.dll
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\Airport_Panel\Airport_Panel\obj\Debug\net6.0\Airport_Panel.csproj.CopyComplete

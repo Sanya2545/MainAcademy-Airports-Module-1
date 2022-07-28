@@ -8,11 +8,11 @@ namespace Airport_Panel
 {
     public static class AirportInfo
     {
-        public enum EmergencyType { Evacuation, Fire}
+        public enum EmergencyType { Evacuation, Fire }
         public static Flight Search(List<Flight> flights, int id = 0)
         {
             Flight flight = flights.Where(i => i.ID == id).FirstOrDefault()!;
-            if(flight != null)
+            if (flight != null)
             {
                 Console.WriteLine("Searching by ID succeed !");
                 return flight;
@@ -48,8 +48,17 @@ namespace Airport_Panel
                 throw new NullReferenceException("The flight you were searching is null !");
             }
         }
-        public static void Emergency(EmergencyType emergency = EmergencyType.Evacuation)
+        public static void Emergency(EmergencyType emergency = EmergencyType.Evacuation, object obj = null!)
         {
+
+            if(obj is Airport airport)
+            {
+                Console.WriteLine("Something happend in airport : \n" + airport.Name);
+            }
+            else if(obj is Airplane airplane)
+            {
+                Console.WriteLine("Something happend in airplane : \n" + airplane);
+            }
             switch (emergency)
             {
                 case EmergencyType.Evacuation:
