@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Airport_Panel.AirplaneFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +9,16 @@ namespace Airport_Panel
 {
     public class Menu
     {
+        public enum MenuPoints {AddDataToList = 1, UpdateExistingData, DeleteAllData, SearchFlights, ShowAllFLights, EmergencyMessage, Exit };
         public static string ShowMenu()
         {
             return "1. Create flights\n" +
                    "2. Update existing data\n" +
                    "3. Delete all data\n" +
                    "4. Search Flight by ID, Date & Time, Airports\n" +
-                   "5. Emergency message\n" +
-                   "6. Exit";
+                   "5. Show all flights as a table\n" +
+                   "6. Emergency message\n" +
+                   "7. Exit";
         }
         public static Terminal CreateTerminal()
         {
@@ -40,6 +43,7 @@ namespace Airport_Panel
         }
         public static Airplane CreateAirplane()
         {
+            bool result = false;
             Console.Clear();
             string name = "";
             int typeOfPlane = 0;
@@ -48,9 +52,10 @@ namespace Airport_Panel
             Console.Write("Enter the name of your airplane : ");
             name = Console.ReadLine()!;
             Console.Write("Enter the type of your plane,\n1 - Boeing;\n2 - Airbus : ");
-            int.TryParse(Console.ReadLine()!, out typeOfPlane);
+            int.TryParse(Console.ReadLine()!, out typeOfPlane);//
             Console.Write("Enter the number of seats in your airplane : ");
-            int.TryParse(Console.ReadLine(), out numOfSeats);
+            int.TryParse(Console.ReadLine(), out numOfSeats);//
+            
             if (name == null || typeOfPlane < 1 || typeOfPlane > 2 || numOfSeats <= 6)
             {
                 throw new ArgumentException("Ypu've been putted wrong parameter !");
@@ -100,7 +105,11 @@ namespace Airport_Panel
             Flight.FlightStatus.TryParse(Console.ReadLine(), out status);
             Airport airport = CreateAirport();
             Airplane airplane = CreateAirplane();
-            Flight flight = new Flight(dateTime, name, airline, status, airplane, airport);
+
+            Prices prices = new Prices(100, 150, 180, 250);
+            List<Passenger> passengers = new() { new Passenger(5, new Passport(), Flight.Classes.Comfort)};
+            Flight flight = new Flight(dateTime, name, airline, status, airplane, airport, prices, passengers);
+            flight.Attach(airport);
             return flight;
         }
         public static List<Flight> AddDataToList()
@@ -159,21 +168,21 @@ namespace Airport_Panel
         public static void Run()
         {
             List<Flight> flights = new();
-            int answer = 0;
+            MenuPoints answer = 0;
             do
             {
                 Console.Clear();
                 Console.WriteLine(ShowMenu());
                 Console.Write("Enter number of option : ");
-                int.TryParse(Console.ReadLine(), out answer);
+                MenuPoints.TryParse(Console.ReadLine(), out answer);
                 switch (answer)
                 {
-                    case 1:
+                    case MenuPoints.AddDataToList:
                         {
                             flights = AddDataToList();
                             break;
                         }
-                    case 2:
+                    case MenuPoints.UpdateExistingData:
                         {
                             string ifNullMessage = "You have not any flights to update them, please fill it firsly !";
                             string messageWrite = "Enter which flight you want to update : ";
@@ -182,7 +191,7 @@ namespace Airport_Panel
                             ActionOnFlight(flights, ifNullMessage, messageWrite, messageException, (i) => flights[i - 1] = CreateFlight());
                             break;
                         }
-                    case 3:
+                    case MenuPoints.DeleteAllData:
                         {
                             string ifNullMessage = "You have not any flights to delete them, please fill it firsly !";
                             string messageWrite = "Enter which flight you want to delete : ";
@@ -191,7 +200,7 @@ namespace Airport_Panel
                             ActionOnFlight(flights, ifNullMessage, messageWrite, messageException, (i) => flights.RemoveAt(i - 1));
                             break;
                         }
-                    case 4:
+                    case MenuPoints.SearchFlights:
                         {
                             int id = 0;
                             ShowFlights(flights);
@@ -199,18 +208,28 @@ namespace Airport_Panel
                             int.TryParse(Console.ReadLine(), out id);
                             Flight flight = AirportInfo.Search(flights, id);
                             Console.WriteLine(flight + "\n\n");
+                            Console.ReadKey();
                             break;
                         }
-                    case 5:
+                    case MenuPoints.ShowAllFLights:
+                        {
+                            foreach (var item in flights)
+                            {
+                                Console.WriteLine(item);
+                            }
+                            Console.ReadKey();
+                            break;
+                        }
+                    case MenuPoints.EmergencyMessage:
                         {
                             int i = 0;
                             ShowFlights(flights);
                             Console.Write("In which flight you have an emergency : ");
                             int.TryParse(Console.ReadLine(), out i);
-                            AirportInfo.Emergency(AirportInfo.EmergencyType.Evacuation, flights[i - 1]);
+                            AirportInfo.Emergency(AirportInfo.EmergencyType.Evacuation, flights[i + 1]);
                             break;
                         }
-                    case 6:
+                    case MenuPoints.Exit:
                         {
                             System.Environment.Exit(0);
                             break;
@@ -222,7 +241,7 @@ namespace Airport_Panel
                             break;
                         }
                 }
-            } while (answer != 6);
+            } while (answer != MenuPoints.Exit);
         }
     }
 }
