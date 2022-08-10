@@ -1,5 +1,6 @@
 ﻿using Airport_Panel.AirplaneFolder;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,21 @@ using System.Threading.Tasks;
 
 namespace Airport_Panel
 {
-    public static class AirportInfo
+    public class AirportInfo : IEnumerable
     {
+        private List<Flight> Flights { get; set; }
+        public AirportInfo(List<Flight> flights = null!)
+        {
+            if(flights != null)
+            {
+                Flights = flights;
+            }
+            else
+            {
+                Flights = new List<Flight>();
+            }
+        }
+
         public enum EmergencyType { Evacuation, Fire }
         public static Flight Search(List<Flight> flights, int id = 0)
         {
@@ -23,7 +37,7 @@ namespace Airport_Panel
                 throw new NullReferenceException("The flight you were searching is null !");
             }
         }
-        //Searching passengers 
+        //Searching passengers
         //Searching Passenger by flightID
         public static Passenger Search(Flight flight, int flightID)
         {
@@ -121,6 +135,13 @@ namespace Airport_Panel
                 throw new NullReferenceException("The flight you were searching is null !");
             }
         }
+        public IEnumerator GetEnumerator()
+        {
+            foreach(Flight item in Flights)
+            {
+                yield return item;
+            }
+        }
         public static void Emergency(EmergencyType emergency = EmergencyType.Evacuation, object obj = null!)
         {
             if(obj is Airport airport)
@@ -148,6 +169,6 @@ namespace Airport_Panel
                     break;
             }
         }
-
+        
     }
 }

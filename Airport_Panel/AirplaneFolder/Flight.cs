@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
-using Airport_Panel.AirplaneFolder;
-using Airport_Panel.InterfacesFolder;
+﻿using Airport_Panel.AirplaneFolder;
+using System.Collections;
+
 
 namespace Airport_Panel
 {
-    public class Flight : IAirplane
+    public class Flight : IAirplane, IComparable, IComparer, IEnumerable
     {
         public int ID
         {
@@ -29,22 +23,24 @@ namespace Airport_Panel
             OnDepartStatusEvent.Invoke(this);
         }
         private FlightStatus _status;
-        public enum Classes { Econom = 1, Comfort, ComfortPlus, Business}
+        public enum Classes { Econom = 1, Comfort, ComfortPlus, Business }
         private static int id = 0;
         public enum FlightStatus { CheckIn = 1, GateClosed, Arrived, DepartedAt, Unknown, Canceled, ExpectedAt, Delayed, InFlight }
         public string Name { get; set; }
         public DateTime DateTime { get; set; }
         public string Airline { get; set; }
-        
-        public FlightStatus Status { get { return _status; }
+
+        public FlightStatus Status
+        {
+            get { return _status; }
             set
             {
                 _status = value;
-                if(_status == FlightStatus.Arrived)
+                if (_status == FlightStatus.Arrived)
                 {
                     InvokeArriveStatusEvent();
                 }
-                else if(_status == FlightStatus.DepartedAt)
+                else if (_status == FlightStatus.DepartedAt)
                 {
                     InvokeDepartStatusEvent();
                 }
@@ -119,11 +115,44 @@ namespace Airport_Panel
             Passengers = null!;
         }
 
-
+        //ID Generator
         private static int generateId()
         {
             return id += 1;
         }
+        //CompareTo method 
+        public int CompareTo(object? obj)
+        {
+            if (obj is Flight flight)
+            {
+
+                //If this object is greater than the next
+                if (this.ID > flight.ID)
+                {
+                    return 1;  
+                }
+                //If this object is smaller than the next
+                else if(this.ID < flight.ID)
+                {
+                    return -1;
+                }
+                //If null or equal
+                return 0;
+            }
+            throw new ArgumentException("This object isn't a flight !");
+        }
+        public int Compare(object? x, object? y)
+        {
+            if(x is Flight f1 && y is Flight f2)
+            {
+                return f1.ID.CompareTo(f2.ID);
+            }
+            else
+            {
+                throw new ArgumentException("Outter, this object isn't a flight !");
+            }
+        }
+        //ToString Method
         public override string ToString()
         {
             string temp = "";
@@ -134,5 +163,7 @@ namespace Airport_Panel
             return $"\nID : {ID}\nName : {Name},\nDateTime : {DateTime},\nAirline : {Airline},\n" +
                 $"Status : {Status},\n\tAirport : {Airport},\n\tPrices : {Prices},\n\tPassengers : {temp}";
         }
+
+        
     }
 }
