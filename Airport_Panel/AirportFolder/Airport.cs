@@ -8,7 +8,7 @@ using static Airport_Panel.Flight;
 
 namespace Airport_Panel
 {
-    public class Airport : IAirport, IObserver
+    public class Airport : IAirport
     {
         public string Name { get; init; }
         private List<Terminal> Terminals { get; set; }
@@ -19,25 +19,9 @@ namespace Airport_Panel
             Terminals = terminals;
 
         }
-        public void Update(ISubject subject)
-        {
-            if (subject is Flight flight)
-            {
-                if (flight.Status == FlightStatus.Arrived)
-                {
-                    Console.WriteLine(String.Format("{0} Plane has been Arrived from airport {1}!", flight.Plane, Name));
-                    Console.ReadKey();
-                }
-                else if (flight.Status == FlightStatus.DepartedAt)
-                {
-                    Console.WriteLine(
-                        String.Format("{0} Plane has been Departed at the airport {1}!"),
-                        flight.Plane,
-                        Name);
-                    Console.ReadKey();
-                }
-            }
-        }
+        //
+       
+
         public override string ToString()
         {
             string temp = "";
@@ -45,7 +29,7 @@ namespace Airport_Panel
             {
                 temp += item.ToString();
             }
-            return "\nName : " + Name + "\nTerminals : " + temp;
+            return "\tAirport Name : " + Name + "\nTerminals : " + temp;
         }
     }
 }

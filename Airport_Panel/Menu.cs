@@ -1,15 +1,17 @@
 ﻿using Airport_Panel.AirplaneFolder;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Airport_Panel.Flight;
 
 namespace Airport_Panel
 {
     public class Menu
     {
-        public enum MenuPoints {AddDataToList = 1, UpdateExistingData, DeleteAllData, SearchFlights, ShowAllFLights, EmergencyMessage, Exit };
+        public enum MenuPoints { AddDataToList = 1, UpdateExistingData, DeleteAllData, SearchFlights, ShowAllFLights, EmergencyMessage, Exit };
         public static string ShowMenu()
         {
             return "1. Create flights\n" +
@@ -43,7 +45,6 @@ namespace Airport_Panel
         }
         public static Airplane CreateAirplane()
         {
-            bool result = false;
             Console.Clear();
             string name = "";
             int typeOfPlane = 0;
@@ -55,10 +56,10 @@ namespace Airport_Panel
             int.TryParse(Console.ReadLine()!, out typeOfPlane);//
             Console.Write("Enter the number of seats in your airplane : ");
             int.TryParse(Console.ReadLine(), out numOfSeats);//
-            
+
             if (name == null || typeOfPlane < 1 || typeOfPlane > 2 || numOfSeats <= 6)
             {
-                throw new ArgumentException("Ypu've been putted wrong parameter !");
+                throw new ArgumentException("You've been putted wrong parameter !");
             }
             Airplane airplane = new Airplane(name, (Airplane.TypeOfPlane)typeOfPlane, numOfSeats);
             return airplane;
@@ -83,6 +84,7 @@ namespace Airport_Panel
         }
         public static Flight CreateFlight()
         {
+            string filePath = @"D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\Airport_Panel\bin\Debug\net6.0";
             Console.Clear();
             DateTime dateTime;
             string name = "";
@@ -107,11 +109,32 @@ namespace Airport_Panel
             Airplane airplane = CreateAirplane();
 
             Prices prices = new Prices(100, 150, 180, 250);
-            List<Passenger> passengers = new() { new Passenger(5, new Passport(), Flight.Classes.Comfort)};
-            Flight flight = new Flight(dateTime, name, airline, status, airplane, airport, prices, passengers);
-            flight.Attach(airport);
+            List<Passenger> passengers = new() { new Passenger(5, new Passport(), Flight.Classes.Comfort) };
+            Flight flight = new Flight(dateTime, name, airline, FlightStatus.Unknown, airplane, airport, prices, passengers);
+            flight.OnArriveStatusEvent += Flight_OnArriveStatusEvent;
+            flight.OnDepartStatusEvent += Flight_OnDepartStatusEvent;
+            flight.Status = FlightStatus.DepartedAt;
+            using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                StreamWriter sw = new StreamWriter(fs);
+                string serializedFlight = JsonConvert.SerializeObject(flight);
+                sw.WriteLine(serializedFlight);
+                sw.Close();
+            }
+            Console.ReadKey();
             return flight;
         }
+
+        private static void Flight_OnDepartStatusEvent(Flight flight)
+        {
+            Console.WriteLine($"The plane has been departed to the airport: {flight.Airport.Name}");
+        }
+
+        private static void Flight_OnArriveStatusEvent(Flight flight)
+        {
+            Console.WriteLine($"The plane has been arrived to the airport : ");
+        }
+
         public static List<Flight> AddDataToList()
         {
             Console.Clear();
@@ -125,6 +148,11 @@ namespace Airport_Panel
             }
             return list;
         }
+
+        //private static void Flight_OnChangeStatusEvent()
+        //{
+            
+        //}
 
         public static void ActionOnFlight(List<Flight> flights, string ifNull, string messageWrite, string messageException, Action<int> action)
         {
@@ -180,6 +208,7 @@ namespace Airport_Panel
                     case MenuPoints.AddDataToList:
                         {
                             flights = AddDataToList();
+                            Console.ReadKey();
                             break;
                         }
                     case MenuPoints.UpdateExistingData:
@@ -189,6 +218,7 @@ namespace Airport_Panel
                             string messageException = "You have been putted wrong index !!!\n";
 
                             ActionOnFlight(flights, ifNullMessage, messageWrite, messageException, (i) => flights[i - 1] = CreateFlight());
+                            Console.ReadKey();
                             break;
                         }
                     case MenuPoints.DeleteAllData:
@@ -198,6 +228,7 @@ namespace Airport_Panel
                             string messageException = "You have been putted wrong index !!!\n";
 
                             ActionOnFlight(flights, ifNullMessage, messageWrite, messageException, (i) => flights.RemoveAt(i - 1));
+                            Console.ReadKey();
                             break;
                         }
                     case MenuPoints.SearchFlights:
@@ -227,6 +258,7 @@ namespace Airport_Panel
                             Console.Write("In which flight you have an emergency : ");
                             int.TryParse(Console.ReadLine(), out i);
                             AirportInfo.Emergency(AirportInfo.EmergencyType.Evacuation, flights[i + 1]);
+                            Console.ReadKey();
                             break;
                         }
                     case MenuPoints.Exit:
@@ -238,6 +270,7 @@ namespace Airport_Panel
                     default:
                         {
                             Console.WriteLine("You've been putted wrong answer !");
+                            Console.ReadKey();
                             break;
                         }
                 }

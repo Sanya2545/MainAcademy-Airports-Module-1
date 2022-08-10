@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_4\\Airport_Module4\\Airport_Panel\\Airport_Panel.csproj": {}
+    "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\Airport_Panel.csproj": {}
   },
   "projects": {
-    "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_4\\Airport_Module4\\Airport_Panel\\Airport_Panel.csproj": {
+    "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\Airport_Panel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_4\\Airport_Module4\\Airport_Panel\\Airport_Panel.csproj",
+        "projectUniqueName": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\Airport_Panel.csproj",
         "projectName": "Airport_Panel",
-        "projectPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_4\\Airport_Module4\\Airport_Panel\\Airport_Panel.csproj",
+        "projectPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\Airport_Panel.csproj",
         "packagesPath": "C:\\Users\\sasha\\.nuget\\packages\\",
-        "outputPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_4\\Airport_Module4\\Airport_Panel\\obj\\",
+        "outputPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -48,6 +48,10 @@
             "ConsoleTables": {
               "target": "Package",
               "version": "[2.4.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

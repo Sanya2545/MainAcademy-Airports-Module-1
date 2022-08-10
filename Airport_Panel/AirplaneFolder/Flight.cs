@@ -10,26 +10,44 @@ using Airport_Panel.InterfacesFolder;
 
 namespace Airport_Panel
 {
-    public class Flight : IAirplane, ISubject
+    public class Flight : IAirplane
     {
-        private List<IObserver> _observers;
-        private FlightStatus _status;
-        public enum Classes { Econom = 1, Comfort, ComfortPlus, Business}
-        private static int id = 0;
-        public enum FlightStatus { CheckIn = 1, GateClosed, Arrived, DepartedAt, Unknown, Canceled, ExpectedAt, Delayed, InFlight }
         public int ID
         {
             get { return generateId(); }
             set { }
         }
+        public delegate void EventDelegate(Flight flight);
+        public event EventDelegate OnArriveStatusEvent;
+        public event EventDelegate OnDepartStatusEvent;
+        private void InvokeArriveStatusEvent()
+        {
+            OnArriveStatusEvent.Invoke(this);
+        }
+        private void InvokeDepartStatusEvent()
+        {
+            OnDepartStatusEvent.Invoke(this);
+        }
+        private FlightStatus _status;
+        public enum Classes { Econom = 1, Comfort, ComfortPlus, Business}
+        private static int id = 0;
+        public enum FlightStatus { CheckIn = 1, GateClosed, Arrived, DepartedAt, Unknown, Canceled, ExpectedAt, Delayed, InFlight }
         public string Name { get; set; }
         public DateTime DateTime { get; set; }
         public string Airline { get; set; }
+        
         public FlightStatus Status { get { return _status; }
             set
             {
                 _status = value;
-                Notify();
+                if(_status == FlightStatus.Arrived)
+                {
+                    InvokeArriveStatusEvent();
+                }
+                else if(_status == FlightStatus.DepartedAt)
+                {
+                    InvokeDepartStatusEvent();
+                }
             }
         }
         public Airplane Plane { get; set; }
@@ -39,7 +57,7 @@ namespace Airport_Panel
         public Flight(DateTime dateTime, string name = "Unknown", string airline = "Turkish Airlines",
             FlightStatus status = FlightStatus.Unknown, Airplane airplane = null!, Airport airport = null!, Prices prices = null!, List<Passenger> passengers = null!)
         {
-            _observers = new List<IObserver>();
+            //OnArriveStatusEvent = new EventDelegate();
             Name = name;
             DateTime = dateTime;
             Airline = airline;
@@ -49,6 +67,7 @@ namespace Airport_Panel
             Prices = prices;
             Passengers = passengers;
         }
+
         public bool ChangeData(DateTime dateTime, string name = "Unknown", string airline = "Turkish Airlines",
             FlightStatus status = FlightStatus.Unknown, Airplane airplane = null!, Airport airport = null!, Prices prices = null!, List<Passenger> passengers = null!)
         {
@@ -100,17 +119,6 @@ namespace Airport_Panel
             Passengers = null!;
         }
 
-        public void Attach(IObserver observer)
-        {
-            _observers.Add(observer);
-        }
-        public void Notify()
-        {
-            _observers.ForEach(o =>
-            {
-                o.Update(this);
-            });
-        }
 
         private static int generateId()
         {
@@ -124,7 +132,7 @@ namespace Airport_Panel
                 temp += item;
             }
             return $"\nID : {ID}\nName : {Name},\nDateTime : {DateTime},\nAirline : {Airline},\n" +
-                $"Status : {Status},\nAirport : {Airport},\n\tPrices : {Prices},\n\tPassengers : {temp}";
+                $"Status : {Status},\n\tAirport : {Airport},\n\tPrices : {Prices},\n\tPassengers : {temp}";
         }
     }
 }
