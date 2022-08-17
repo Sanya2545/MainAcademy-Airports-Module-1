@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DAL_Airport_Panel/1.0.0": {
+        "runtime": {
+          "DAL_Airport_Panel.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DAL_Airport_Panel/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
-namespace Airport_Panel
+using DAL_DAL_Airport_Panel;
+
+namespace UIL_Airport_Panel
 {
     public class Program
     {

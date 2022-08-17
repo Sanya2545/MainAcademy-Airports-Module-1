@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QbxsrAGwVdU0wPQxe6ti/Yc9WnOeMKCCkrby9NW14YQN9m/oQHn9OacrnfqJQN8UPsPXe0Ll/J84hQx3/MjzOA==",
+  "dgSpecHash": "3Y7Dk0zdwIcF/ezWFWqim68ZGy3hGOW8fAyyxZloWVDu6tTT1budQYYkqMw1hx1QElOdF7GNhz/VNiI9QrRIWQ==",
   "success": true,
-  "projectFilePath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\Airport_Panel.csproj",
+  "projectFilePath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sasha\\.nuget\\packages\\consoletables\\2.4.2\\consoletables.2.4.2.nupkg.sha512",
     "C:\\Users\\sasha\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

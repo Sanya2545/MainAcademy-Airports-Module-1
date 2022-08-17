@@ -1,0 +1,12 @@
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\DAL_Airport_Panel.csproj.AssemblyReference.cache
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\DAL_Airport_Panel.GeneratedMSBuildEditorConfig.editorconfig
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\DAL_Airport_Panel.AssemblyInfoInputs.cache
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\DAL_Airport_Panel.AssemblyInfo.cs
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\DAL_Airport_Panel.csproj.CoreCompileInputs.cache
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\bin\Debug\net6.0\DAL_Airport_Panel.deps.json
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\bin\Debug\net6.0\DAL_Airport_Panel.dll
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\bin\Debug\net6.0\DAL_Airport_Panel.pdb
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\DAL_Airport_Panel.dll
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\refint\DAL_Airport_Panel.dll
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\DAL_Airport_Panel.pdb
+D:\MainAcademy\C# .NET\LabWorks\Module_1\Airport_Panel\DAL_Airport_Panel\obj\Debug\net6.0\ref\DAL_Airport_Panel.dll
