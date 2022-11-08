@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj": {}
+    "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj": {}
   },
   "projects": {
-    "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj": {
+    "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj",
+        "projectUniqueName": "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj",
         "projectName": "UIL_Airport_Panel",
-        "projectPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj",
+        "projectPath": "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\Airport_Panel\\UIL_Airport_Panel.csproj",
         "packagesPath": "C:\\Users\\sasha\\.nuget\\packages\\",
-        "outputPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\Airport_Panel\\obj\\",
+        "outputPath": "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\Airport_Panel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -33,8 +33,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj": {
-                "projectPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj"
+              "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj": {
+                "projectPath": "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj"
               }
             }
           }
@@ -68,7 +68,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -77,18 +78,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj": {
+    "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj",
+        "projectUniqueName": "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj",
         "projectName": "DAL_Airport_Panel",
-        "projectPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj",
+        "projectPath": "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\DAL_Airport_Panel.csproj",
         "packagesPath": "C:\\Users\\sasha\\.nuget\\packages\\",
-        "outputPath": "D:\\MainAcademy\\C# .NET\\LabWorks\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\obj\\",
+        "outputPath": "D:\\MainAcademy\\C# .NET\\LabWorks_1\\Module_1\\Airport_Panel\\DAL_Airport_Panel\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -127,7 +128,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -136,7 +138,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

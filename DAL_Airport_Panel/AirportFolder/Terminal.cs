@@ -32,7 +32,7 @@ namespace DAL_Airport_Panel
             {
                 temp += $"\n\t\tGate #{i + 1} : {Gates[i]}";
             }
-            return $"\n\tTerminal #{ID} {Name}{temp}";
+            return $"\n\tTerminal #{ID} {Name}\n{temp}";
         }
         private static int generateId()
         {

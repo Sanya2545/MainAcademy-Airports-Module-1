@@ -13,6 +13,7 @@ namespace UIL_Airport_Panel
 {
     public class Menu
     {
+        private string connectionString = @"Server=ASUS-VIVOBOOK-P\SASHASQLSERVER;Database=main;InitialCatalog=;Trusted_Connection=True;";
         public enum MenuPoints { AddDataToList = 1, UpdateExistingData, DeleteAllData, SearchFlights, ShowAllFLights, EmergencyMessage, Exit };
         public static string ShowMenu()
         {
@@ -69,7 +70,7 @@ namespace UIL_Airport_Panel
                 Console.Write("Enter the number of seats in your airplane : ");
                 int.TryParse(Console.ReadLine(), out numOfSeats);//
 
-                if (name == null || typeOfPlane < 1 || typeOfPlane > 2 || numOfSeats <= 6)
+                if (name == null || typeOfPlane < 1 || typeOfPlane > 2 || numOfSeats < 6)
                 {
                     throw new ArgumentException("You've been putted wrong parameter !");
                 }
@@ -113,7 +114,6 @@ namespace UIL_Airport_Panel
             Console.Clear();
             try
             {
-                string connectionString = @"Server=ASUS-VIVOBOOK-P\SASHASQLSERVER;Database=main;InitialCatalog=;Trusted_Connection=True;";
                 DateTime dateTime;
                 string name = "";
                 string airline = "";
@@ -306,6 +306,7 @@ namespace UIL_Airport_Panel
                             ShowFlights(flights);
                             Console.Write("In which flight you have an emergency : ");
                             int.TryParse(Console.ReadLine(), out i);
+
                             AirportInfo.Emergency(AirportInfo.EmergencyType.Evacuation, flights[i + 1]);
                             Console.ReadKey();
                             break;

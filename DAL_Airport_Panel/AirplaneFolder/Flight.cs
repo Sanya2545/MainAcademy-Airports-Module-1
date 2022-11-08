@@ -7,6 +7,7 @@ namespace DAL_Airport_Panel
 {
     public class Flight : IAirplane, IComparable, IComparer
     {
+        public string Message { get; set; }
         private static int id = 0;
         public int ID
         {
@@ -75,11 +76,11 @@ namespace DAL_Airport_Panel
         #region Default Events
         public void DefaultOnArriveEvent(object o)
         {
-            Console.WriteLine("The function value was not assigned !");
+            Message = "The function value was not assigned !";
         }
         public void DefaultOnDepartEvent(object o)
         {
-            Console.WriteLine("The function value was not assigned !");
+            Message = "The function value was not assigned !";
         }
         #endregion
         public bool ChangeData(DateTime dateTime, string name = "Unknown", string airline = "Turkish Airlines",
@@ -171,6 +172,7 @@ namespace DAL_Airport_Panel
             }
         }
         //ToString Method
+        //Trouble with initialization of inner object - NullReference exception 
         public override string ToString()
         {
             string temp = "";

@@ -13,9 +13,15 @@ namespace DAL_Airport_Panel
         private List<Terminal> Terminals { get; set; }
         public Airport(string name = "Unknown", List<Terminal> terminals = null!)
         {
-            Terminals = new List<Terminal>();
+            if(terminals == null)
+            {
+                Terminals = new List<Terminal>();
+            }
+            else
+            {
+                Terminals = terminals;
+            }
             Name = name;
-            Terminals = terminals;
 
         }
         //
